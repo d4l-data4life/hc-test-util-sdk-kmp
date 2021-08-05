@@ -115,7 +115,7 @@ gpr.user=github-username
 gpr.key=github-token
 ----
 
-=== util-test
+=== test-util
 
 ----
 dependencies {
@@ -123,7 +123,7 @@ dependencies {
 }
 ----
 
-=== util-coroutine-test
+=== test-util-coroutine
 
 Add following dependencies to your app build.gradle.
 
@@ -133,7 +133,7 @@ dependencies {
 }
 ----
 
-=== util-ktor-test
+=== test-util-ktor
 
 Add following dependencies to your app build.gradle.
 
