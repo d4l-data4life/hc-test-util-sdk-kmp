@@ -12,7 +12,7 @@ and this project adheres to http://semver.org/spec/v2.0.0.html[Semantic Versioni
 ==== Versions
 toc::[]
 
-== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/0.1.0...main[Unreleased]
+== https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/0.1.0...main[Unreleased]
 
 === Added
 
@@ -27,6 +27,6 @@ toc::[]
 === Migration
 
 
-== https://github.com/d4l-data4life/hc-util-sdk-kmp/compare/v0.1.0[0.1.0]
+== https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/v0.1.0[0.1.0]
 
 Initial release taken to be open sourced.
