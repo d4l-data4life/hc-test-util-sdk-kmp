@@ -14,35 +14,23 @@
  * contact D4L by email to help@data4life.care.
  */
 
-buildscript {
-    dependencies {
-        classpath(GradlePlugins.kotlin)
-        classpath(GradlePlugins.android)
+package care.data4life.sdk.util.test.ktor
+
+import io.ktor.client.engine.mock.MockRequestHandleScope
+import io.ktor.client.engine.mock.respond
+import io.ktor.client.request.HttpResponseData
+import io.ktor.http.ContentType
+import io.ktor.http.headersOf
+
+object HttpMockClientResponseFactory {
+    fun createHelloWorldOkResponse(scope: MockRequestHandleScope): HttpResponseData {
+        return scope.respond(
+            "Hello World!",
+            headers = headersOf(
+                "Content-Type" to listOf(
+                    ContentType.Text.Plain.toString()
+                )
+            )
+        )
     }
-}
-
-plugins {
-    kotlinMultiplatform(false)
-
-    id("scripts.dependency-updates")
-    id("scripts.download-scripts")
-    id("scripts.publishing")
-    id("scripts.quality-spotless")
-    id("scripts.versioning")
-}
-
-allprojects {
-    repositories {
-        mavenCentral()
-        google()
-
-        gitHub(project)
-
-        d4l()
-    }
-}
-
-tasks.named<Wrapper>("wrapper") {
-    gradleVersion = "6.8.3"
-    distributionType = Wrapper.DistributionType.ALL
 }

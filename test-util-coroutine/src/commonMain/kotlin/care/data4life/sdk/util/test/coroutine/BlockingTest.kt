@@ -13,36 +13,16 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
+package care.data4life.sdk.util.test.coroutine
 
-buildscript {
-    dependencies {
-        classpath(GradlePlugins.kotlin)
-        classpath(GradlePlugins.android)
-    }
-}
+import kotlinx.coroutines.CoroutineScope
+import kotlin.coroutines.CoroutineContext
 
-plugins {
-    kotlinMultiplatform(false)
-
-    id("scripts.dependency-updates")
-    id("scripts.download-scripts")
-    id("scripts.publishing")
-    id("scripts.quality-spotless")
-    id("scripts.versioning")
-}
-
-allprojects {
-    repositories {
-        mavenCentral()
-        google()
-
-        gitHub(project)
-
-        d4l()
-    }
-}
-
-tasks.named<Wrapper>("wrapper") {
-    gradleVersion = "6.8.3"
-    distributionType = Wrapper.DistributionType.ALL
-}
+// see: https://github.com/Kotlin/kotlinx.coroutines/issues/1996
+expect val testCoroutineContext: CoroutineContext
+expect fun runBlockingTest(block: suspend CoroutineScope.() -> Unit)
+// Please note: this solves a specific iOS with shared immutable states while running in async Context
+expect fun runWithContextBlockingTest(
+    context: CoroutineContext,
+    block: suspend CoroutineScope.() -> Unit
+)

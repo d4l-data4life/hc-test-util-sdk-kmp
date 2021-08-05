@@ -14,35 +14,6 @@
  * contact D4L by email to help@data4life.care.
  */
 
-buildscript {
-    dependencies {
-        classpath(GradlePlugins.kotlin)
-        classpath(GradlePlugins.android)
-    }
-}
+package care.data4life.sdk.util.test.lang
 
-plugins {
-    kotlinMultiplatform(false)
-
-    id("scripts.dependency-updates")
-    id("scripts.download-scripts")
-    id("scripts.publishing")
-    id("scripts.quality-spotless")
-    id("scripts.versioning")
-}
-
-allprojects {
-    repositories {
-        mavenCentral()
-        google()
-
-        gitHub(project)
-
-        d4l()
-    }
-}
-
-tasks.named<Wrapper>("wrapper") {
-    gradleVersion = "6.8.3"
-    distributionType = Wrapper.DistributionType.ALL
-}
+class FileNotFoundError : RuntimeException()

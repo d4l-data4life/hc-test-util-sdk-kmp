@@ -13,36 +13,22 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
+package care.data4life.sdk.util.test.coroutine
 
-buildscript {
-    dependencies {
-        classpath(GradlePlugins.kotlin)
-        classpath(GradlePlugins.android)
-    }
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.runBlocking
+import kotlin.coroutines.CoroutineContext
+
+actual val testCoroutineContext: CoroutineContext = newSingleThreadContext("testRunner")
+
+actual fun runBlockingTest(block: suspend CoroutineScope.() -> Unit) {
+    runBlocking(testCoroutineContext) { this.block() }
 }
 
-plugins {
-    kotlinMultiplatform(false)
-
-    id("scripts.dependency-updates")
-    id("scripts.download-scripts")
-    id("scripts.publishing")
-    id("scripts.quality-spotless")
-    id("scripts.versioning")
-}
-
-allprojects {
-    repositories {
-        mavenCentral()
-        google()
-
-        gitHub(project)
-
-        d4l()
-    }
-}
-
-tasks.named<Wrapper>("wrapper") {
-    gradleVersion = "6.8.3"
-    distributionType = Wrapper.DistributionType.ALL
+actual fun runWithContextBlockingTest(
+    context: CoroutineContext,
+    block: suspend CoroutineScope.() -> Unit
+) {
+    runBlocking(context) { this.block() }
 }
