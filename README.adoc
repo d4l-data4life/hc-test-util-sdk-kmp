@@ -33,18 +33,18 @@ endif::[]
         ·
         <a href="https://github.com/d4l-data4life/hc-test-util-sdk-kmp/issues">Request Feature</a>
     </p>
-    <p>
+    <p><!-- PROJECT BADGES see badges.adoc how to change them -->
         <a href="https://github.com/d4l-data4life/hc-test-util-sdk-kmp/releases">
-            <img src="assets/images/version-latest.svg" alt="Latest version"/>
+            <img src="assets/images/badge-release-latest.svg" alt="Latest version"/>
         </a>
         <a href="https://github.com/d4l-data4life/hc-test-util-sdk-kmp/actions">
-            <img src="https://github.com/d4l-data4life/hc-test-util-sdk-kmp/workflows/D4L%20CI%20-%20Latest%20Version/badge.svg" alt="D4L CI - Latest Version: Build status"/>
+            <img src="https://github.com/d4l-data4life/hc-test-util-sdk-kmp/actions/workflows/d4l-ci-latest-version.yml/badge.svg" alt="Build Status"/>
         </a>
         <a>
-            <img src="assets/images/platform-support-android-jvm.svg" alt="Platform"/>
+            <img src="assets/images/badge-platform-support.svg" alt="Platform"/>
         </a>
-        <a href="https://github.com/d4l-data4life/hc-test-util-sdk-kmp/blob/main/LICENSE">
-            <img src="assets/images/license-private-blue.svg" alt="License"/>
+        <a href="LICENSE">
+            <img src="assets/images/badge-license.svg" alt="License"/>
         </a>
     </p>
 </div>
