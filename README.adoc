@@ -1,4 +1,4 @@
-= Data4Life Util SDK
+= Data4Life Test Util SDK
 :test-util-sdk-version: 0.1.0
 :doctype: article
 :!showtitle:
