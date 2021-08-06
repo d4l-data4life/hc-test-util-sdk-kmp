@@ -79,8 +79,8 @@ kotlin {
 
         val iosMain by getting {
             dependencies {
-                implementation(Dependency.multiplatform.kotlin.stdlibNative)
-                implementation(Dependency.multiplatform.d4l.sdkUtil)
+                implementation(Dependencies.multiplatform.kotlin.stdlibNative)
+                implementation(Dependencies.multiplatform.d4l.sdkObjcUtil)
             }
         }
 
