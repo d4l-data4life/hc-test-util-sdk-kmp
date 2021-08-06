@@ -34,13 +34,7 @@ kotlin {
 
     jvm()
 
-    ios {
-        binaries {
-            framework {
-                baseName = care.data4life.sdk.util.test.LibraryConfig.name
-            }
-        }
-    }
+    ios {}
 
     sourceSets {
         val commonMain by getting {
