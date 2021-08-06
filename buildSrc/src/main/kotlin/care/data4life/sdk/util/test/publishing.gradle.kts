@@ -16,91 +16,216 @@
 
 package care.data4life.sdk.util.test
 
-import org.gradle.api.publish.maven.MavenPublication
+import org.eclipse.jgit.api.Git
+import org.eclipse.jgit.api.ResetCommand
+import org.eclipse.jgit.transport.PushResult
+import org.eclipse.jgit.transport.RemoteRefUpdate
+import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider
 
 /**
+ * Publish generated artefacts to our maven-repository using [jGit](https://www.eclipse.org/jgit/)
+ *
  * Install:
  *
- * Just add id("care.data4life.sdk.util.test.publishing-config") to your project module build.gradle.kts plugins section
+ * You need to add following dependencies to the buildSrc/build.gradle.kts
+ *
+ * dependencies {
+ *     implementation("org.eclipse.jgit:org.eclipse.jgit:5.11.0.202103091610-r")
+ * }
+ *
+ * and ensure that the mavenCentral repository is available
+ *
+ * repositories {
+ *     mavenCentral()
+ * }
+ *
+ * Now just add id("care.data4life.sdk.util.test.publishing") to your rootProject build.gradle.kts plugins
  *
  * plugins {
- *     id("care.data4life.sdk.util.test.publishing-config")
+ *     id("care.data4life.sdk.util.test.publishing")
  * }
  *
  * Usage:
  *
- * To publish to to https://github.com/d4l-data4life/maven-repository/ just run:
+ * To publish to to https://github.com/d4l-data4life/maven-features/ just run:
  * - ./gradlew publishFeature
+ * To publish to to https://github.com/d4l-data4life/maven-snapshots/ just run:
  * - ./gradlew publishSnapshot
+ * To publish to to https://github.com/d4l-data4life/maven-releases/ just run:
  * - ./gradlew publishRelease
  *
- * This requires a care.data4life.sdk.util.test.LibraryConfig configured
+ * This requires publishing-config.gradle.kts!
  */
-plugins {
-    `maven-publish`
+
+val taskGroup = "publishing"
+
+val featureRepoName = "maven-features"
+val snapshotRepoName = "maven-snapshots"
+val releaseRepoName = "maven-releases"
+
+val basePath = "${rootProject.buildDir}/gitPublish"
+
+val gitHubToken = (project.findProperty("gpr.key")
+    ?: System.getenv("PACKAGE_REGISTRY_UPLOAD_TOKEN")).toString()
+
+
+task<Exec>("publishFeature") {
+    group = taskGroup
+
+    commandLine(
+        "./gradlew",
+        "gitPublishFeatureCheckout",
+        "gitPublishFeatureUpdate",
+        "publishAllPublicationsToFeaturePackagesRepository",
+        "gitPublishFeatureCommit",
+        "gitPublishFeaturePush"
+    )
 }
 
-publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            setUrl("https://maven.pkg.github.com/${LibraryConfig.githubOwner}/${LibraryConfig.githubRepository}")
-            credentials {
-                username = (project.findProperty("gpr.user")
-                    ?: System.getenv("PACKAGE_REGISTRY_UPLOAD_USERNAME")).toString()
-                password = (project.findProperty("gpr.key")
-                    ?: System.getenv("PACKAGE_REGISTRY_UPLOAD_TOKEN")).toString()
-            }
-        }
+task<Exec>("publishSnapshot") {
+    group = taskGroup
 
-        val target = "file://${project.rootProject.buildDir}/gitPublish"
+    commandLine(
+        "./gradlew",
+        "gitPublishSnapshotCheckout",
+        "gitPublishSnapshotUpdate",
+        "publishAllPublicationsToSnapshotPackagesRepository",
+        "gitPublishSnapshotCommit",
+        "gitPublishSnapshotPush"
+    )
+}
 
-        maven {
-            name = "ReleasePackages"
-            setUrl("$target/maven-releases/releases")
-        }
+task<Exec>("publishRelease") {
+    group = taskGroup
 
-        maven {
-            name = "SnapshotPackages"
-            setUrl("$target/maven-snapshots/snapshots")
-        }
+    commandLine(
+        "./gradlew",
+        "gitPublishReleaseCheckout",
+        "gitPublishReleaseUpdate",
+        "publishAllPublicationsToReleasePackagesRepository",
+        "gitPublishReleaseCommit",
+        "gitPublishReleasePush"
+    )
+}
 
-        maven {
-            name = "FeaturePackages"
-            setUrl("$target/maven-features/features")
-        }
+// Git Checkout
+val gitPublishFeatureCheckout: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitClone(featureRepoName) }
+}
+
+val gitPublishSnapshotCheckout: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitClone(snapshotRepoName) }
+}
+
+val gitPublishReleaseCheckout: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitClone(releaseRepoName) }
+}
+
+// Git Update
+val gitPublishFeatureUpdate: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitUpdate(featureRepoName) }
+}
+
+val gitPublishSnapshotUpdate: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitUpdate(snapshotRepoName) }
+}
+
+val gitPublishReleaseUpdate: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitUpdate(releaseRepoName) }
+}
+
+// Git Commit
+val gitPublishFeatureCommit: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitCommit(featureRepoName) }
+}
+
+val gitPublishSnapshotCommit: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitCommit(snapshotRepoName) }
+}
+
+val gitPublishReleaseCommit: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitCommit(releaseRepoName) }
+}
+
+// Git Push
+val gitPublishFeaturePush: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitPush(featureRepoName) }
+}
+
+val gitPublishSnapshotPush: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitPush(snapshotRepoName) }
+}
+
+val gitPublishReleasePush: Task by tasks.creating {
+    group = taskGroup
+    doLast { gitPush(releaseRepoName) }
+}
+
+// Git calls
+fun gitClone(repositoryName: String) {
+    try {
+        gitUpdate(repositoryName)
+    } catch (exception: Exception) {
+        Git.cloneRepository()
+            .setURI("https://github.com/d4l-data4life/$repositoryName.git")
+            .setCredentialsProvider(UsernamePasswordCredentialsProvider(gitHubToken, ""))
+            .setDirectory(File("$basePath/$repositoryName"))
+            .call()
     }
+}
 
-    publications {
-        withType<MavenPublication> {
-            groupId = LibraryConfig.PublishConfig.groupId
+fun gitUpdate(repositoryName: String) {
+    val git = Git.open(File("$basePath/$repositoryName"))
 
-            pom {
-                description.set(LibraryConfig.PublishConfig.description)
-                url.set(LibraryConfig.PublishConfig.url)
-                inceptionYear.set(LibraryConfig.PublishConfig.year)
+    git.fetch()
+        .setForceUpdate(true)
+        .setCredentialsProvider(UsernamePasswordCredentialsProvider(gitHubToken, ""))
+        .call()
 
-                licenses {
-                    license {
-                        name.set(LibraryConfig.PublishConfig.licenseName)
-                        url.set(LibraryConfig.PublishConfig.licenseUrl)
-                        distribution.set(LibraryConfig.PublishConfig.licenseDistribution)
-                    }
-                }
+    git.reset()
+        .setMode(ResetCommand.ResetType.HARD)
+        .setRef("origin/main")
+        .call()
+}
 
-                developers {
-                    developer {
-                        id.set(LibraryConfig.PublishConfig.developerId)
-                        name.set(LibraryConfig.PublishConfig.developerName)
-                        email.set(LibraryConfig.PublishConfig.developerEmail)
-                    }
-                }
+fun gitCommit(repositoryName: String) {
+    val git = Git.open(File("$basePath/$repositoryName"))
 
-                scm {
-                    connection.set(LibraryConfig.PublishConfig.scmConnection)
-                    developerConnection.set(LibraryConfig.PublishConfig.scmDeveloperConnection)
-                    url.set(LibraryConfig.PublishConfig.scmUrl)
-                }
+    git.add().addFilepattern(".").call()
+
+    git.commit()
+        .setMessage("Publish ${LibraryConfig.name} ${project.version}")
+        .call()
+}
+
+fun gitPush(repositoryName: String) {
+    val git = Git.open(File("$basePath/$repositoryName"))
+
+    val results: Iterable<PushResult> = git.push()
+        .setCredentialsProvider(UsernamePasswordCredentialsProvider(gitHubToken, ""))
+        .call()
+
+    results.forEach { result ->
+        (result.remoteUpdates as Collection<RemoteRefUpdate>).forEach { update ->
+            if (
+                update.status == RemoteRefUpdate.Status.REJECTED_NONFASTFORWARD
+                || update.status == RemoteRefUpdate.Status.REJECTED_REMOTE_CHANGED
+                || update.status == RemoteRefUpdate.Status.REJECTED_NODELETE
+                || update.status == RemoteRefUpdate.Status.REJECTED_OTHER_REASON
+            ) {
+                println(update.status)
+                throw IllegalStateException("Remote advanced! Please update first")
             }
         }
     }
