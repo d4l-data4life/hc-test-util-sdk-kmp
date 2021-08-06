@@ -17,6 +17,8 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
+
+        includeBuild("gradlePlugin/test-util-dependency")
     }
 }
 

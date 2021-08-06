@@ -15,16 +15,16 @@
  */
 
 plugins {
-    kotlinMultiplatform()
+    id("org.jetbrains.kotlin.multiplatform")
 
     // Android
-    androidLibrary()
+    id("com.android.library")
 
     // Publish
-    id("scripts.publishing-config")
+    id("care.data4life.sdk.util.test.publishing-config")
 }
 
-group = LibraryConfig.group
+group = care.data4life.sdk.util.test.LibraryConfig.group
 
 kotlin {
     android {
@@ -36,7 +36,7 @@ kotlin {
     ios {
         binaries {
             framework {
-                baseName = LibraryConfig.name
+                baseName = care.data4life.sdk.util.test.LibraryConfig.name
             }
         }
     }
@@ -99,11 +99,11 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(LibraryConfig.android.compileSdkVersion)
+    compileSdkVersion(care.data4life.sdk.util.test.LibraryConfig.android.compileSdkVersion)
 
     defaultConfig {
-        minSdkVersion(LibraryConfig.android.minSdkVersion)
-        targetSdkVersion(LibraryConfig.android.targetSdkVersion)
+        minSdkVersion(care.data4life.sdk.util.test.LibraryConfig.android.minSdkVersion)
+        targetSdkVersion(care.data4life.sdk.util.test.LibraryConfig.android.targetSdkVersion)
 
         versionCode = 1
         versionName = "${project.version}"
@@ -116,7 +116,7 @@ android {
         )
     }
 
-    resourcePrefix(LibraryConfig.android.resourcePrefix)
+    resourcePrefix(care.data4life.sdk.util.test.LibraryConfig.android.resourcePrefix)
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
