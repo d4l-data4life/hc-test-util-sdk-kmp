@@ -33,13 +33,7 @@ kotlin {
 
     jvm()
 
-    ios {
-        binaries {
-            framework {
-                baseName = LibraryConfig.name
-            }
-        }
-    }
+    ios {}
 
     sourceSets {
         val commonMain by getting {

@@ -33,13 +33,7 @@ kotlin {
 
     jvm()
 
-    ios {
-        binaries {
-            framework {
-                baseName = LibraryConfig.name
-            }
-        }
-    }
+    ios {}
 
     sourceSets {
         val commonMain by getting {
@@ -84,7 +78,7 @@ kotlin {
         val iosMain by getting {
             dependencies {
                 implementation(Dependencies.multiplatform.kotlin.stdlibNative)
-                implementation(Dependencies.multiplatform.d4l.sdkUtil)
+                implementation(Dependencies.multiplatform.d4l.sdkObjcUtil)
             }
         }
 
