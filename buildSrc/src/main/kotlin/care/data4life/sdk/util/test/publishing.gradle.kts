@@ -14,9 +14,8 @@
  * contact D4L by email to help@data4life.care.
  */
 
-package scripts
+package care.data4life.sdk.util.test
 
-import LibraryConfig
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.api.ResetCommand
 import org.eclipse.jgit.transport.PushResult
@@ -24,7 +23,9 @@ import org.eclipse.jgit.transport.RemoteRefUpdate
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider
 
 /**
- * Usage:
+ * Publish generated artefacts to our maven-repository using [jGit](https://www.eclipse.org/jgit/)
+ *
+ * Install:
  *
  * You need to add following dependencies to the buildSrc/build.gradle.kts
  *
@@ -38,11 +39,13 @@ import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider
  *     mavenCentral()
  * }
  *
- * Now just add id("scripts.publishing") to your rootProject build.gradle.kts plugins
+ * Now just add id("care.data4life.sdk.util.test.publishing") to your rootProject build.gradle.kts plugins
  *
  * plugins {
- *     id("scripts.publishing")
+ *     id("care.data4life.sdk.util.test.publishing")
  * }
+ *
+ * Usage:
  *
  * To publish to to https://github.com/d4l-data4life/maven-features/ just run:
  * - ./gradlew publishFeature
@@ -63,7 +66,7 @@ val releaseRepoName = "maven-releases"
 val basePath = "${rootProject.buildDir}/gitPublish"
 
 val gitHubToken = (project.findProperty("gpr.key")
-    ?: System.getenv("PACKAGE_REGISTRY_TOKEN")).toString()
+    ?: System.getenv("PACKAGE_REGISTRY_UPLOAD_TOKEN")).toString()
 
 
 task<Exec>("publishFeature") {
@@ -106,65 +109,65 @@ task<Exec>("publishRelease") {
 }
 
 // Git Checkout
-val gitPublishFeatureCheckout: Task by tasks.creating() {
+val gitPublishFeatureCheckout: Task by tasks.creating {
     group = taskGroup
     doLast { gitClone(featureRepoName) }
 }
 
-val gitPublishSnapshotCheckout: Task by tasks.creating() {
+val gitPublishSnapshotCheckout: Task by tasks.creating {
     group = taskGroup
     doLast { gitClone(snapshotRepoName) }
 }
 
-val gitPublishReleaseCheckout: Task by tasks.creating() {
+val gitPublishReleaseCheckout: Task by tasks.creating {
     group = taskGroup
     doLast { gitClone(releaseRepoName) }
 }
 
 // Git Update
-val gitPublishFeatureUpdate: Task by tasks.creating() {
+val gitPublishFeatureUpdate: Task by tasks.creating {
     group = taskGroup
     doLast { gitUpdate(featureRepoName) }
 }
 
-val gitPublishSnapshotUpdate: Task by tasks.creating() {
+val gitPublishSnapshotUpdate: Task by tasks.creating {
     group = taskGroup
     doLast { gitUpdate(snapshotRepoName) }
 }
 
-val gitPublishReleaseUpdate: Task by tasks.creating() {
+val gitPublishReleaseUpdate: Task by tasks.creating {
     group = taskGroup
     doLast { gitUpdate(releaseRepoName) }
 }
 
 // Git Commit
-val gitPublishFeatureCommit: Task by tasks.creating() {
+val gitPublishFeatureCommit: Task by tasks.creating {
     group = taskGroup
     doLast { gitCommit(featureRepoName) }
 }
 
-val gitPublishSnapshotCommit: Task by tasks.creating() {
+val gitPublishSnapshotCommit: Task by tasks.creating {
     group = taskGroup
     doLast { gitCommit(snapshotRepoName) }
 }
 
-val gitPublishReleaseCommit: Task by tasks.creating() {
+val gitPublishReleaseCommit: Task by tasks.creating {
     group = taskGroup
     doLast { gitCommit(releaseRepoName) }
 }
 
 // Git Push
-val gitPublishFeaturePush: Task by tasks.creating() {
+val gitPublishFeaturePush: Task by tasks.creating {
     group = taskGroup
     doLast { gitPush(featureRepoName) }
 }
 
-val gitPublishSnapshotPush: Task by tasks.creating() {
+val gitPublishSnapshotPush: Task by tasks.creating {
     group = taskGroup
     doLast { gitPush(snapshotRepoName) }
 }
 
-val gitPublishReleasePush: Task by tasks.creating() {
+val gitPublishReleasePush: Task by tasks.creating {
     group = taskGroup
     doLast { gitPush(releaseRepoName) }
 }

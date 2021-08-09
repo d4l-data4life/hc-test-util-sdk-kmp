@@ -13,15 +13,18 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
+import care.data4life.sdk.util.test.LibraryConfig
+import care.data4life.sdk.util.test.dependency.Dependency
+import care.data4life.sdk.util.test.dependency.Version
 
 plugins {
-    kotlinMultiplatform()
+    id("org.jetbrains.kotlin.multiplatform")
 
     // Android
-    androidLibrary()
+    id("com.android.library")
 
     // Publish
-    id("scripts.publishing-config")
+    id("care.data4life.sdk.util.test.publishing-config")
 }
 
 group = LibraryConfig.group
@@ -38,51 +41,51 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(Dependencies.multiplatform.kotlin.stdlibCommon)
-                implementation(Dependencies.multiplatform.coroutines.common)
+                implementation(Dependency.multiplatform.kotlin.stdlibCommon)
+                implementation(Dependency.multiplatform.coroutines.common)
             }
         }
         val commonTest by getting {
             dependencies {
-                implementation(Dependencies.multiplatform.kotlin.testCommon)
-                implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
+                implementation(Dependency.multiplatform.kotlin.testCommon)
+                implementation(Dependency.multiplatform.kotlin.testCommonAnnotations)
             }
         }
 
         val androidMain by getting {
             dependencies {
-                implementation(Dependencies.multiplatform.kotlin.stdlibAndroid)
-                implementation(Dependencies.multiplatform.coroutines.android)
+                implementation(Dependency.multiplatform.kotlin.stdlibAndroid)
+                implementation(Dependency.multiplatform.coroutines.android)
             }
         }
         val androidTest by getting {
             dependencies {
-                implementation(Dependencies.multiplatform.kotlin.testJvm)
-                implementation(Dependencies.multiplatform.kotlin.testJvmJunit)
+                implementation(Dependency.multiplatform.kotlin.testJvm)
+                implementation(Dependency.multiplatform.kotlin.testJvmJunit)
 
-                implementation(Dependencies.android.robolectric)
+                implementation(Dependency.android.robolectric)
             }
         }
 
         val jvmMain by getting {
             dependencies {
-                implementation(Dependencies.multiplatform.kotlin.stdlibJdk8)
-                implementation(Dependencies.multiplatform.coroutines.common)
+                implementation(Dependency.multiplatform.kotlin.stdlibJdk8)
+                implementation(Dependency.multiplatform.coroutines.common)
             }
         }
         val jvmTest by getting {
             dependencies {
-                implementation(Dependencies.multiplatform.kotlin.testJvm)
-                implementation(Dependencies.multiplatform.kotlin.testJvmJunit)
+                implementation(Dependency.multiplatform.kotlin.testJvm)
+                implementation(Dependency.multiplatform.kotlin.testJvmJunit)
             }
         }
 
         val iosMain by getting {
             dependencies {
-                implementation(Dependencies.multiplatform.kotlin.stdlibNative)
-                implementation(Dependencies.multiplatform.coroutines.common) {
+                implementation(Dependency.multiplatform.kotlin.stdlibNative)
+                implementation(Dependency.multiplatform.coroutines.common) {
                     version {
-                        strictly(Versions.kotlinCoroutines)
+                        strictly(Version.kotlinCoroutines)
                     }
                 }
             }
@@ -90,8 +93,8 @@ kotlin {
 
         val iosTest by getting {
             dependencies {
-                implementation(Dependencies.multiplatform.kotlin.testCommon)
-                implementation(Dependencies.multiplatform.kotlin.testCommonAnnotations)
+                implementation(Dependency.multiplatform.kotlin.testCommon)
+                implementation(Dependency.multiplatform.kotlin.testCommonAnnotations)
             }
         }
     }

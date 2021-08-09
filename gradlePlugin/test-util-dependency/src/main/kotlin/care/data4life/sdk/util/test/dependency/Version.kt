@@ -13,11 +13,12 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
+package care.data4life.sdk.util.test.dependency
 
-object Versions {
+object Version {
 
-    object GradlePlugins {
-        const val kotlin = Versions.kotlin
+    object GradlePlugin {
+        const val kotlin = Version.kotlin
         const val android = "4.2.2"
     }
 
@@ -37,7 +38,7 @@ object Versions {
 
     // D4L
     // https://github.com/d4l-data4life/hc-objc-util-sdk-kmp
-    const val sdkObjcUtil = "0.1.1"
+    const val sdkObjcUtil = "0.1.0"
 
     // Android
     // https://developer.android.com/studio/write/java8-support

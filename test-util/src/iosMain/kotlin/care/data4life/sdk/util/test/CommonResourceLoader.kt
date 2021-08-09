@@ -16,7 +16,7 @@
 
 package care.data4life.sdk.util.test
 
-import care.data4life.sdk.util.NSDataMapper
+import care.data4life.sdk.util.objc.NSDataMapper
 import care.data4life.sdk.util.test.lang.FileNotFoundError
 import kotlinx.cinterop.memScoped
 import platform.Foundation.NSData
