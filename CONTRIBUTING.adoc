@@ -67,6 +67,7 @@ Please use our title pattern: `[{ticket id}] {type of change} {short description
 * `short description` of your change
 
 Example:
+
 * Add awesome hashing algorithm
 * [SDK-156] Change thumbnail generation
 
