@@ -56,14 +56,13 @@ kotlin {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.stdlibAndroid)
                 implementation(Dependency.multiplatform.coroutines.android)
+                implementation(Dependency.androidTest.robolectric)
             }
         }
         val androidTest by getting {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.testJvm)
                 implementation(Dependency.multiplatform.kotlin.testJvmJunit)
-
-                implementation(Dependency.android.robolectric)
             }
         }
 

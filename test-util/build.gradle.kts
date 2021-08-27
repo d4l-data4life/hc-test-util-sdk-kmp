@@ -55,12 +55,14 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.stdlibAndroid)
+                implementation(Dependency.androidTest.robolectric)
+
+                implementation(Dependency.multiplatform.kotlin.testJvmJunit)
             }
         }
         val androidTest by getting {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.testJvm)
-                implementation(Dependency.multiplatform.kotlin.testJvmJunit)
             }
         }
 

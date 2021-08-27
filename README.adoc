@@ -65,6 +65,7 @@ Currently we support Android, JVM and iOS and Kotlin-Multiplatform.
 
 ==== util-test
 * ResourceLoader for common code
+* Robolectric Annotation for common code
 
 ==== util-coroutine-test
 * runBlockingTest and runWithContextBlocking to enable tests with coroutines in common code
