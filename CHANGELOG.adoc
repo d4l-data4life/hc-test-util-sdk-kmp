@@ -16,6 +16,8 @@ toc::[]
 
 === Added
 
+* RobolectricTestRunner for common.
+
 === Changed
 
 === Removed

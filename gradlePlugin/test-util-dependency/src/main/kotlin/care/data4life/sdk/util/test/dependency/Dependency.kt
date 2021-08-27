@@ -91,9 +91,6 @@ object Dependency {
 
         // Material
         const val material = "com.google.android.material:material:${Version.material}"
-
-        // Test
-        const val robolectric = "org.robolectric:robolectric:${Version.robolectric}"
     }
 
     val androidTest = AndroidTest
@@ -111,5 +108,8 @@ object Dependency {
 
         const val uiAutomator =
             "androidx.test.uiautomator:uiautomator:${Version.androidXUiAutomator}"
+
+        // Test
+        const val robolectric = "org.robolectric:robolectric:${Version.robolectric}"
     }
 }
