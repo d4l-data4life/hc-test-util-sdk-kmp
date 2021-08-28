@@ -26,6 +26,8 @@ toc::[]
 
 === Bumped
 
+* Robolectric 4.4 -> 4.6.1
+
 === Migration
 
 
