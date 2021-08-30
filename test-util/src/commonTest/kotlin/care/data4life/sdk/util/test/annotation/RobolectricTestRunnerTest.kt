@@ -3,8 +3,8 @@ package care.data4life.sdk.util.test.annotation
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-expect object TestHash {
-    fun hash(data: ByteArray): String
+expect object TestBase64 {
+    fun encode(data: ByteArray): String
 }
 
 @RunWithRobolectricTestRunner(RobolectricTestRunner::class)
@@ -15,13 +15,12 @@ class RobolectricTestRunnerTest {
         val data = "The quick brown fox jumps over the lazy dog"
 
         // When
-        val result = TestHash.hash(data.encodeToByteArray())
+        val result = TestBase64.encode(data.encodeToByteArray())
 
         // Then
         assertEquals(
-            "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12",
-            result,
-            "Failed to create sha1"
+            expected = "VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZw==",
+            actual = result,
         )
     }
 }
