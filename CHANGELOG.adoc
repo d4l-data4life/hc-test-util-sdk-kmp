@@ -12,11 +12,9 @@ and this project adheres to http://semver.org/spec/v2.0.0.html[Semantic Versioni
 ==== Versions
 toc::[]
 
-== https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/0.1.0...main[Unreleased]
+== https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/0.2.0...main[Unreleased]
 
 === Added
-
-* RobolectricTestRunner for common.
 
 === Changed
 
@@ -26,9 +24,18 @@ toc::[]
 
 === Bumped
 
-* Robolectric 4.4 -> 4.6.1
-
 === Migration
+
+
+== https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/v0.2.0[0.2.0]
+
+=== Added
+
+* RobolectricTestRunner for common
+
+=== Bumped
+
+* Robolectric 4.4 -> 4.6.1
 
 
 == https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/v0.1.0[0.1.0]

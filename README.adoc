@@ -1,5 +1,5 @@
 = Data4Life Test Util SDK
-:test-util-sdk-version: 0.1.0
+:test-util-sdk-version: 0.2.0
 :doctype: article
 :!showtitle:
 :toc: macro
