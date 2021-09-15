@@ -35,7 +35,7 @@ object Version {
 
     // D4L
     // https://github.com/d4l-data4life/hc-objc-util-sdk-kmp
-    const val sdkObjcUtil = "0.1.0"
+    const val sdkObjcUtil = "0.1.0-bump-kotlin-SNAPSHOT"
 
     // Android
     // https://developer.android.com/studio/write/java8-support
