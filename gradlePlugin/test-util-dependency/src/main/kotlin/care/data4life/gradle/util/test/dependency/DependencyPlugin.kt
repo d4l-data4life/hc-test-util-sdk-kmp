@@ -14,7 +14,7 @@
  * contact D4L by email to help@data4life.care.
  */
 
-package care.data4life.sdk.util.test.dependency
+package care.data4life.gradle.util.test.dependency
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project

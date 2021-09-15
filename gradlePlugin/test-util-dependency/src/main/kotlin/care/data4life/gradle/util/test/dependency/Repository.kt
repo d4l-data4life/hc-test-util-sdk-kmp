@@ -13,7 +13,7 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
-package care.data4life.sdk.util.test.dependency
+package care.data4life.gradle.util.test.dependency
 
 import org.gradle.api.Project
 import org.gradle.api.artifacts.dsl.RepositoryHandler
@@ -29,7 +29,8 @@ object Repository {
 
     val d4l = listOf(
         // Maven dependency group
-        "care.data4life.hc-objc-util-sdk-kmp"
+        "care.data4life.hc-objc-util-sdk-kmp",
+        "care.data4life.gradle.gitversion"
     )
 }
 

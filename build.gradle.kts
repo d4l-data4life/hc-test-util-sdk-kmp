@@ -13,17 +13,17 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
-import care.data4life.sdk.util.test.dependency.d4l
-import care.data4life.sdk.util.test.dependency.gitHub
+import care.data4life.gradle.util.test.dependency.d4l
+import care.data4life.gradle.util.test.dependency.gitHub
 
 plugins {
-    id("care.data4life.sdk.util.test.dependency")
+    id("care.data4life.gradle.util.test.dependency")
 
-    id("care.data4life.sdk.util.test.dependency-updates")
-    id("care.data4life.sdk.util.test.download-scripts")
-    id("care.data4life.sdk.util.test.publishing")
-    id("care.data4life.sdk.util.test.quality-spotless")
-    id("care.data4life.sdk.util.test.versioning")
+    id("care.data4life.gradle.util.test.script.dependency-updates")
+    id("care.data4life.gradle.util.test.script.download-scripts")
+    id("care.data4life.gradle.util.test.script.publishing")
+    id("care.data4life.gradle.util.test.script.quality-spotless")
+    id("care.data4life.gradle.util.test.script.versioning")
 }
 
 allprojects {

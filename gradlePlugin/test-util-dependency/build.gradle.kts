@@ -20,7 +20,7 @@ plugins {
 }
 
 // To make it available as direct dependency
-group = "care.data4life.sdk.util.test.dependency"
+group = "care.data4life.gradle.util.test.dependency"
 version = "1.0.0-SNAPSHOT"
 
 repositories {
@@ -28,8 +28,8 @@ repositories {
 }
 
 gradlePlugin {
-    plugins.register("care.data4life.sdk.util.test.dependency") {
-        id = "care.data4life.sdk.util.test.dependency"
-        implementationClass = "care.data4life.sdk.util.test.dependency.DependencyPlugin"
+    plugins.register("care.data4life.gradle.util.test.dependency") {
+        id = "care.data4life.gradle.util.test.dependency"
+        implementationClass = "care.data4life.gradle.util.test.dependency.DependencyPlugin"
     }
 }
