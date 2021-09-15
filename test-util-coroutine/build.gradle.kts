@@ -15,6 +15,7 @@
  */
 import care.data4life.gradle.util.test.dependency.Dependency
 import care.data4life.gradle.util.test.dependency.Version
+import care.data4life.gradle.util.test.config.LibraryConfig
 
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
@@ -40,50 +41,50 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.stdlibCommon)
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.coroutines.common)
+                implementation(Dependency.multiplatform.kotlin.stdlibCommon)
+                implementation(Dependency.multiplatform.coroutines.common)
             }
         }
         val commonTest by getting {
             dependencies {
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.testCommon)
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.testCommonAnnotations)
+                implementation(Dependency.multiplatform.kotlin.testCommon)
+                implementation(Dependency.multiplatform.kotlin.testCommonAnnotations)
             }
         }
 
         val androidMain by getting {
             dependencies {
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.stdlibAndroid)
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.coroutines.android)
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.androidTest.robolectric)
+                implementation(Dependency.multiplatform.kotlin.stdlibAndroid)
+                implementation(Dependency.multiplatform.coroutines.android)
+                implementation(Dependency.androidTest.robolectric)
             }
         }
         val androidTest by getting {
             dependencies {
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.testJvm)
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.testJvmJunit)
+                implementation(Dependency.multiplatform.kotlin.testJvm)
+                implementation(Dependency.multiplatform.kotlin.testJvmJunit)
             }
         }
 
         val jvmMain by getting {
             dependencies {
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.stdlibJdk8)
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.coroutines.common)
+                implementation(Dependency.multiplatform.kotlin.stdlibJdk8)
+                implementation(Dependency.multiplatform.coroutines.common)
             }
         }
         val jvmTest by getting {
             dependencies {
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.testJvm)
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.testJvmJunit)
+                implementation(Dependency.multiplatform.kotlin.testJvm)
+                implementation(Dependency.multiplatform.kotlin.testJvmJunit)
             }
         }
 
         val iosMain by getting {
             dependencies {
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.stdlibNative)
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.coroutines.common) {
+                implementation(Dependency.multiplatform.kotlin.stdlibNative)
+                implementation(Dependency.multiplatform.coroutines.common) {
                     version {
-                        strictly(care.data4life.gradle.util.test.dependency.Version.kotlinCoroutines)
+                        strictly(Version.kotlinCoroutines)
                     }
                 }
             }
@@ -91,19 +92,19 @@ kotlin {
 
         val iosTest by getting {
             dependencies {
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.testCommon)
-                implementation(care.data4life.gradle.util.test.dependency.Dependency.multiplatform.kotlin.testCommonAnnotations)
+                implementation(Dependency.multiplatform.kotlin.testCommon)
+                implementation(Dependency.multiplatform.kotlin.testCommonAnnotations)
             }
         }
     }
 }
 
 android {
-    compileSdkVersion(care.data4life.gradle.util.test.config.LibraryConfig.android.compileSdkVersion)
+    compileSdkVersion(LibraryConfig.android.compileSdkVersion)
 
     defaultConfig {
-        minSdkVersion(care.data4life.gradle.util.test.config.LibraryConfig.android.minSdkVersion)
-        targetSdkVersion(care.data4life.gradle.util.test.config.LibraryConfig.android.targetSdkVersion)
+        minSdkVersion(LibraryConfig.android.minSdkVersion)
+        targetSdkVersion(LibraryConfig.android.targetSdkVersion)
 
         versionCode = 1
         versionName = "${project.version}"
@@ -116,7 +117,7 @@ android {
         )
     }
 
-    resourcePrefix(care.data4life.gradle.util.test.config.LibraryConfig.android.resourcePrefix)
+    resourcePrefix(LibraryConfig.android.resourcePrefix + "coroutine_")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
