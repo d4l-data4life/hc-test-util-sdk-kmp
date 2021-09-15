@@ -44,6 +44,7 @@ toc::[]
 * Gradle 6.9 -> 7.0.2
 * *_BREAKING_* Kotlin 1.4.32 -> 1.5.21
 * *_BREAKING_* Android Gradle Plugin 4.2.2 -> 7.0.2
+* *_BREAKING_* Coroutines 1.4.3 -> 1.5.1
 * *_BREAKING_* Ktor 1.5.4 -> 1.6.2
 * Android XKtx 1.3.1 -> 1.6.0
 * Android AppCompat 1.2.0 -> 1.3.1
