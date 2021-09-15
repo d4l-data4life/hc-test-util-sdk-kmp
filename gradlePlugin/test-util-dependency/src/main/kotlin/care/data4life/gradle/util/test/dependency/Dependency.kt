@@ -50,8 +50,6 @@ object Dependency {
             const val android =
                 "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.kotlinCoroutines}"
             const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.kotlinCoroutines}"
-
-            const val stately = "co.touchlab:stately-common:${Version.stately}"
         }
 
         val ktor = Ktor

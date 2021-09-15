@@ -17,16 +17,14 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
-
-        includeBuild("gradlePlugin/test-util-dependency")
     }
 }
+
+includeBuild("gradlePlugin/test-util-dependency")
 
 plugins {
     id("com.gradle.enterprise") version("3.4.1")
 }
-
-rootProject.name = "hc-test-util-sdk-kmp"
 
 include(
     "test-util",
@@ -41,3 +39,5 @@ buildCache {
         removeUnusedEntriesAfterDays = 30
     }
 }
+
+rootProject.name = "hc-test-util-sdk-kmp"

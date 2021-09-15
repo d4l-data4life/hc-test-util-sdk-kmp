@@ -19,22 +19,19 @@ object Version {
 
     object GradlePlugin {
         const val kotlin = Version.kotlin
-        const val android = "4.2.2"
+        const val android = "7.0.2"
     }
 
     // Kotlin
     // https://github.com/JetBrains/kotlin
-    const val kotlin = "1.4.32"
+    const val kotlin = "1.5.21"
 
     // https://github.com/Kotlin/kotlinx.coroutines
-    const val kotlinCoroutines = "1.4.3-native-mt"
-
-    // https://github.com/touchlab/Stately
-    const val stately = "1.1.6"
+    const val kotlinCoroutines = "1.5.1-native-mt"
 
     // Network
     // https://ktor.io/
-    const val ktor = "1.5.4"
+    const val ktor = "1.6.2"
 
     // D4L
     // https://github.com/d4l-data4life/hc-objc-util-sdk-kmp
@@ -47,24 +44,24 @@ object Version {
     // AndroidX
     // https://developer.android.com/jetpack/androidx
     const val androidX = "1.1.0"
-    const val androidXKtx = "1.3.1"
-    const val androidXAppCompat = "1.2.0"
+    const val androidXKtx = "1.6.0"
+    const val androidXAppCompat = "1.3.1"
 
     const val androidXConstraintLayout = "2.0.1"
 
     // https://developer.android.com/testing
-    const val androidXTest = "1.1.2"
-    const val androidXEspresso = "3.3.0"
+    const val androidXTest = "1.4.0"
+    const val androidXEspresso = "3.4.0"
     const val androidXUiAutomator = "2.2.0"
 
     // Material
     /**
      * [Material Android](https://github.com/material-components/material-components-android)
      */
-    const val material = "1.2.0"
+    const val material = "1.4.0"
 
     // Junit Test
-    const val testJUnit = "4.13.1"
+    const val testJUnit = "4.13.2"
 
     /**
      * [Robolectric](https://github.com/robolectric/robolectric)
