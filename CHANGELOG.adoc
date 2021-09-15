@@ -16,6 +16,8 @@ toc::[]
 
 === Added
 
+* `AndroidOnly`, `JvmOnly` and `iOSOnly` annotations for common
+
 === Changed
 
 === Removed

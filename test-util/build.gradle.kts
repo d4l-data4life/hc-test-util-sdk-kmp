@@ -69,6 +69,8 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.stdlibJdk8)
+
+                implementation(Dependency.multiplatform.kotlin.testJvmJunit)
             }
         }
         val jvmTest by getting {
@@ -82,6 +84,8 @@ kotlin {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.stdlibNative)
                 implementation(Dependency.multiplatform.d4l.sdkObjcUtil)
+
+                implementation(Dependency.multiplatform.kotlin.testCommonAnnotations)
             }
         }
 
