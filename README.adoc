@@ -1,4 +1,4 @@
-= Data4Life Test Util SDK
+= Data4Life Test-Util SDK
 :link-repository: https://github.com/d4l-data4life/hc-test-util-sdk-kmp
 :test-util-sdk-version: 0.2.0
 :doctype: article
