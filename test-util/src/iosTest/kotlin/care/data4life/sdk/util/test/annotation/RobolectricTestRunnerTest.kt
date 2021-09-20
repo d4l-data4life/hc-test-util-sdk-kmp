@@ -1,6 +1,6 @@
 package care.data4life.sdk.util.test.annotation
 
-import care.data4life.sdk.util.objc.NSDataMapper
+import care.data4life.sdk.util.test.NSDataMapper
 import platform.Foundation.base64EncodedStringWithOptions
 
 actual object TestBase64 {

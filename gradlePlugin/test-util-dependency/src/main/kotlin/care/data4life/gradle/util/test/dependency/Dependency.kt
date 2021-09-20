@@ -58,12 +58,6 @@ object Dependency {
             const val common = "io.ktor:ktor-client-core:${Version.ktor}"
             const val mock = "io.ktor:ktor-client-mock:${Version.ktor}"
         }
-
-        val d4l = D4L
-
-        object D4L {
-            const val sdkObjcUtil = "care.data4life.hc-objc-util-sdk-kmp:objc-util:${Version.sdkObjcUtil}"
-        }
     }
 
     val test = Test
