@@ -53,8 +53,6 @@ toc::[]
 * Android Material Components 1.2.0 -> 1.4.0
 * JUnit 4.13.1 -> 4.13.2
 
-=== Deprecated
-
 === Migration
 
 
