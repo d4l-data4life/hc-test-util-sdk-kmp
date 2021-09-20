@@ -22,14 +22,12 @@ import org.gradle.kotlin.dsl.maven
 object Repository {
     private const val gitHubOrgD4l = "d4l-data4life"
 
-    val github = listOf(
+    val github = listOf<List<String>>(
         // GitHub organization, GitHub repository name, Maven dependency group
-        listOf(gitHubOrgD4l, "hc-objc-util-sdk-kmp", "care.data4life.hc-objc-util-sdk-kmp")
     )
 
     val d4l = listOf(
         // Maven dependency group
-        "care.data4life.hc-objc-util-sdk-kmp",
         "care.data4life.gradle.gitversion"
     )
 }
