@@ -25,11 +25,9 @@ Template could be found here: link:https://github.com/d4l-data4life/hc-readme-te
 ==== Versions
 toc::[]
 
-== https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/0.2.0...main[Unreleased]
+== https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/v0.3.0...main[Unreleased]
 
 === Added
-
-* `AndroidOnly`, `JvmOnly` and `iOSOnly` annotations for common
 
 === Changed
 
@@ -40,6 +38,16 @@ toc::[]
 === Fixed
 
 === Security
+
+=== Bumped
+
+=== Migration
+
+== https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/v0.2.0...v0.3.0[0.3.0]
+
+=== Added
+
+* `AndroidOnly`, `JvmOnly` and `iOSOnly` annotations for common
 
 === Bumped
 
@@ -55,10 +63,7 @@ toc::[]
 * Android Material Components 1.2.0 -> 1.4.0
 * JUnit 4.13.1 -> 4.13.2
 
-=== Migration
-
-
-== https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/v0.2.0[0.2.0]
+== https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/v0.1.0...v0.2.0[0.2.0]
 
 === Added
 
