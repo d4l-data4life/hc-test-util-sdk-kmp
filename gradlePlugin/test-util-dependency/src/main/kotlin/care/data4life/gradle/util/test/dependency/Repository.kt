@@ -26,7 +26,7 @@ object Repository {
         // GitHub organization, GitHub repository name, Maven dependency group
     )
 
-    val d4l = listOf<String>(
+    val d4l = listOf(
         // Maven dependency group
         "care.data4life.gradle.gitversion"
     )
