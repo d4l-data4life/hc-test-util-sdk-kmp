@@ -13,9 +13,9 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
-import care.data4life.sdk.util.test.LibraryConfig
-import care.data4life.sdk.util.test.dependency.Dependency
-import care.data4life.sdk.util.test.dependency.Version
+import care.data4life.gradle.util.test.dependency.Dependency
+import care.data4life.gradle.util.test.dependency.Version
+import care.data4life.gradle.util.test.config.LibraryConfig
 
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
@@ -24,10 +24,10 @@ plugins {
     id("com.android.library")
 
     // Publish
-    id("care.data4life.sdk.util.test.publishing-config")
+    id("care.data4life.gradle.util.test.script.publishing-config")
 }
 
-group = LibraryConfig.group
+group = care.data4life.gradle.util.test.config.LibraryConfig.group
 
 kotlin {
     android {
@@ -117,7 +117,7 @@ android {
         )
     }
 
-    resourcePrefix(LibraryConfig.android.resourcePrefix)
+    resourcePrefix(LibraryConfig.android.resourcePrefix + "coroutine_")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
