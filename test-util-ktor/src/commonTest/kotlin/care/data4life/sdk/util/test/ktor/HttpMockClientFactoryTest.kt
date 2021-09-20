@@ -31,6 +31,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertSame
+import kotlin.test.assertTrue
 
 class HttpMockClientFactoryTest {
     @Test
@@ -116,53 +117,82 @@ class HttpMockClientFactoryTest {
     @Test
     fun `Given createErrorMockClient is called with a Error it creates a MockClient which propagates always the given Error`() = runBlockingTest {
         // Given
-        val error = RuntimeException()
+        val error = RuntimeException("error")
         val client = HttpMockClientFactory.createErrorMockClient(error)
 
         // When
-        val response1 = assertFailsWith<RuntimeException> {
+        val response1 = assertFailsWith<Exception> {
             client.get<Any>("does not matter")
         }
-        val response2 = assertFailsWith<RuntimeException> {
+        val response2 = assertFailsWith<Exception> {
             client.post("does not matter")
         }
-        val response3 = assertFailsWith<RuntimeException> {
+        val response3 = assertFailsWith<Exception> {
             client.put<Any>("does not matter")
         }
-        val response4 = assertFailsWith<RuntimeException> {
+        val response4 = assertFailsWith<Exception> {
             client.head<Any>("does not matter")
         }
-        val response5 = assertFailsWith<RuntimeException> {
+        val response5 = assertFailsWith<Exception> {
             client.patch<Any>("does not matter")
         }
-        val response6 = assertFailsWith<RuntimeException> {
+        val response6 = assertFailsWith<Exception> {
             client.delete<Any>("does not matter")
         }
 
         // Then
-        assertSame(
-            actual = response1,
-            expected = error
+        assertTrue(
+            response1 is RuntimeException,
+            message = "response1 one had an unexpected Error"
         )
-        assertSame(
-            actual = response2,
-            expected = error
+        assertEquals(
+            actual = response1.message,
+            expected = error.message
         )
-        assertSame(
-            actual = response3,
-            expected = error
+
+        assertTrue(
+            response2 is RuntimeException,
+            message = "response2 one had an unexpected Error"
         )
-        assertSame(
-            actual = response4,
-            expected = error
+        assertEquals(
+            actual = response2.message,
+            expected = error.message
         )
-        assertSame(
-            actual = response5,
-            expected = error
+
+        assertTrue(
+            response3 is RuntimeException,
+            message = "response3 one had an unexpected Error"
         )
-        assertSame(
-            actual = response6,
-            expected = error
+        assertEquals(
+            actual = response3.message,
+            expected = error.message
+        )
+
+        assertTrue(
+            response4 is RuntimeException,
+            message = "response4 one had an unexpected Error"
+        )
+        assertEquals(
+            actual = response4.message,
+            expected = error.message
+        )
+
+        assertTrue(
+            response5 is RuntimeException,
+            message = "response5 one had an unexpected Error"
+        )
+        assertEquals(
+            actual = response5.message,
+            expected = error.message
+        )
+
+        assertTrue(
+            response6 is RuntimeException,
+            message = "response6 one had an unexpected Error"
+        )
+        assertEquals(
+            actual = response6.message,
+            expected = error.message
         )
     }
 
