@@ -17,11 +17,11 @@ documentation:
   - readmeOSS.adoc
 
 # Platform
-util-test-library:
+test-util-library:
   - test-util/**/*
 
-util-coroutine-test-library:
+test-util-coroutine-library:
   - test-util-coroutine/**/*
 
-util-ktor-test-library:
+test-util-ktor-library:
   - test-util-ktor/**/*
