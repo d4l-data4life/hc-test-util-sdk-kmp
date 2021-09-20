@@ -13,7 +13,7 @@
  * applications and/or if you’d like to contribute to the development of the SDK, please
  * contact D4L by email to help@data4life.care.
  */
-package care.data4life.sdk.util.test
+package care.data4life.gradle.util.test.config
 
 object LibraryConfig {
     val publishConfig = PublishConfig

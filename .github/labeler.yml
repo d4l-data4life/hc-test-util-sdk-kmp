@@ -1,12 +1,14 @@
 build:
   - .github/**/*
 
+scripts:
+  - buildSrc/src/main/kotlin/care/data4life/gradle/util/test/script/**/*.kts
+
 dependencies:
   - buildSrc/**/*
 
 documentation:
   - docs/**/*
-  - sdk-doc/**/*
   - README.adoc
   - LICENSE
   - CHANGELOG.adoc
@@ -23,10 +25,3 @@ util-coroutine-test-library:
 
 util-ktor-test-library:
   - test-util-ktor/**/*
-
-# Sample
-sample-android:
-  - sample-android/**/*
-
-sample-jvm:
-  - sample-jvm/**/*
