@@ -18,15 +18,18 @@ package care.data4life.gradle.util.test.dependency
 object Dependency {
 
     val kotlin = Kotlin
+
     object Kotlin {
         const val stdLib = Multiplatform.Kotlin.stdlibJdk
         const val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Version.kotlin}"
     }
 
     val multiplatform = Multiplatform
+
     object Multiplatform {
 
         val kotlin = Kotlin
+
         object Kotlin {
             const val stdlibCommon = "org.jetbrains.kotlin:kotlin-stdlib-common:${Version.kotlin}"
             const val stdlibJdk = "org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}"
@@ -61,11 +64,13 @@ object Dependency {
     }
 
     val test = Test
+
     object Test {
         const val junit = "junit:junit:${Version.testJUnit}"
     }
 
     val android = Android
+
     object Android {
         // Kotlin
         const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Version.kotlin}"
@@ -74,11 +79,13 @@ object Dependency {
         const val desugar = "com.android.tools:desugar_jdk_libs:${Version.androidDesugar}"
 
         val androidX = AndroidX
+
         object AndroidX {
             // AndroidX
             const val ktx = "androidx.core:core-ktx:${Version.androidXKtx}"
             const val appCompat = "androidx.appcompat:appcompat:${Version.androidXAppCompat}"
-            const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Version.androidXConstraintLayout}"
+            const val constraintLayout =
+                "androidx.constraintlayout:constraintlayout:${Version.androidXConstraintLayout}"
         }
 
         // Material
@@ -86,6 +93,7 @@ object Dependency {
     }
 
     val androidTest = AndroidTest
+
     object AndroidTest {
         const val core = "androidx.test:core:${Version.androidXTest}"
         const val runner = "androidx.test:runner:${Version.androidXTest}"
