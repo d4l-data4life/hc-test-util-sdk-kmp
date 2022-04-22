@@ -43,7 +43,7 @@ object Version {
     /**
      * https://developer.android.com/studio/write/java8-support
      */
-    const val androidDesugar = "1.0.4"
+    const val androidDesugar = "1.0.9"
 
     // AndroidX
     /**
