@@ -37,7 +37,7 @@ object Version {
     /**
      * https://ktor.io/
      */
-    const val ktor = "1.6.2"
+    const val ktor = "1.6.8"
 
     // Android
     /**
