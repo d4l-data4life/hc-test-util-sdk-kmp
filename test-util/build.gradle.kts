@@ -102,6 +102,7 @@ kotlin {
 
 android {
     compileSdk = LibraryConfig.android.compileSdkVersion
+    resourcePrefix = LibraryConfig.android.resourcePrefix
 
     defaultConfig {
         minSdk = LibraryConfig.android.minSdkVersion
@@ -112,8 +113,6 @@ android {
             mapOf("clearPackageData" to "true")
         )
     }
-
-    resourcePrefix(LibraryConfig.android.resourcePrefix)
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

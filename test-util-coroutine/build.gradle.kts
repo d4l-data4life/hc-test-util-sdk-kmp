@@ -27,7 +27,7 @@ plugins {
     id("care.data4life.gradle.util.test.script.publishing-config")
 }
 
-group = care.data4life.gradle.util.test.config.LibraryConfig.group
+group = LibraryConfig.group
 
 kotlin {
     android {
@@ -101,6 +101,7 @@ kotlin {
 
 android {
     compileSdk = LibraryConfig.android.compileSdkVersion
+    resourcePrefix =LibraryConfig.android.resourcePrefix + "coroutine_"
 
     defaultConfig {
         minSdk = LibraryConfig.android.minSdkVersion
@@ -111,8 +112,6 @@ android {
             mapOf("clearPackageData" to "true")
         )
     }
-
-    resourcePrefix(LibraryConfig.android.resourcePrefix + "coroutine_")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

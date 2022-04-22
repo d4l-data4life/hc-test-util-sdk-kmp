@@ -96,6 +96,7 @@ kotlin {
 
 android {
     compileSdk = LibraryConfig.android.compileSdkVersion
+    resourcePrefix =LibraryConfig.android.resourcePrefix + "ktor_"
 
     defaultConfig {
         minSdk = LibraryConfig.android.minSdkVersion
@@ -106,8 +107,6 @@ android {
             mapOf("clearPackageData" to "true")
         )
     }
-
-    resourcePrefix(LibraryConfig.android.resourcePrefix + "ktor_")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
