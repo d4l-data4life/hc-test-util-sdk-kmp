@@ -38,6 +38,15 @@ kotlin {
     ios {}
 
     sourceSets {
+        removeAll { sourceSet ->
+            setOf(
+                "androidAndroidTestRelease",
+                "androidTestFixtures",
+                "androidTestFixturesDebug",
+                "androidTestFixturesRelease",
+            ).contains(sourceSet.name)
+        }
+
         val commonMain by getting {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.stdlibCommon)

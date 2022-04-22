@@ -39,6 +39,22 @@ kotlin {
     ios {}
 
     sourceSets {
+        removeAll { sourceSet ->
+            setOf(
+                "androidAndroidTestRelease",
+                "androidTestFixtures",
+                "androidTestFixturesDebug",
+                "androidTestFixturesRelease",
+            ).contains(sourceSet.name)
+        }
+
+        all {
+            languageSettings.apply {
+                optIn("kotlin.ExperimentalCoroutinesApi")
+                optIn("kotlin.RequiresOptIn")
+            }
+        }
+
         val commonMain by getting {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.stdlibCommon)
