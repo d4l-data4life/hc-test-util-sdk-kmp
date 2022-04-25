@@ -38,15 +38,6 @@ kotlin {
     ios {}
 
     sourceSets {
-        removeAll { sourceSet ->
-            setOf(
-                "androidAndroidTestRelease",
-                "androidTestFixtures",
-                "androidTestFixturesDebug",
-                "androidTestFixturesRelease",
-            ).contains(sourceSet.name)
-        }
-
         val commonMain by getting {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.stdlibCommon)
@@ -67,7 +58,17 @@ kotlin {
                 implementation(Dependency.multiplatform.kotlin.stdlibAndroid)
             }
         }
+
+        val androidAndroidTestRelease by getting
+        val androidTestFixtures by getting
+        val androidTestFixturesDebug by getting
+        val androidTestFixturesRelease by getting
+
         val androidTest by getting {
+            dependsOn(androidAndroidTestRelease)
+            dependsOn(androidTestFixtures)
+            dependsOn(androidTestFixturesDebug)
+            dependsOn(androidTestFixturesRelease)
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.testJvm)
                 implementation(Dependency.multiplatform.kotlin.testJvmJunit)
@@ -105,7 +106,7 @@ kotlin {
 
 android {
     compileSdk = LibraryConfig.android.compileSdkVersion
-    resourcePrefix =LibraryConfig.android.resourcePrefix + "ktor_"
+    resourcePrefix = LibraryConfig.android.resourcePrefix + "ktor_"
 
     defaultConfig {
         minSdk = LibraryConfig.android.minSdkVersion

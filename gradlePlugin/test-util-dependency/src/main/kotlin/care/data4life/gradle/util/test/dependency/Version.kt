@@ -65,7 +65,7 @@ object Version {
     /**
      * [Material Android](https://github.com/material-components/material-components-android)
      */
-    const val material = "1.6.0-rc01"
+    const val material = "1.5.0"
 
     // Junit Test
     const val testJUnit = "4.13.2"

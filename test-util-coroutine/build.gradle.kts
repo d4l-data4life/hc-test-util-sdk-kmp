@@ -39,15 +39,6 @@ kotlin {
     ios {}
 
     sourceSets {
-        removeAll { sourceSet ->
-            setOf(
-                "androidAndroidTestRelease",
-                "androidTestFixtures",
-                "androidTestFixturesDebug",
-                "androidTestFixturesRelease",
-            ).contains(sourceSet.name)
-        }
-
         all {
             languageSettings.apply {
                 optIn("kotlin.ExperimentalCoroutinesApi")
@@ -75,7 +66,17 @@ kotlin {
                 implementation(Dependency.androidTest.robolectric)
             }
         }
+
+        val androidAndroidTestRelease by getting
+        val androidTestFixtures by getting
+        val androidTestFixturesDebug by getting
+        val androidTestFixturesRelease by getting
+
         val androidTest by getting {
+            dependsOn(androidAndroidTestRelease)
+            dependsOn(androidTestFixtures)
+            dependsOn(androidTestFixturesDebug)
+            dependsOn(androidTestFixturesRelease)
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.testJvm)
                 implementation(Dependency.multiplatform.kotlin.testJvmJunit)
@@ -117,7 +118,7 @@ kotlin {
 
 android {
     compileSdk = LibraryConfig.android.compileSdkVersion
-    resourcePrefix =LibraryConfig.android.resourcePrefix + "coroutine_"
+    resourcePrefix = LibraryConfig.android.resourcePrefix + "coroutine_"
 
     defaultConfig {
         minSdk = LibraryConfig.android.minSdkVersion
