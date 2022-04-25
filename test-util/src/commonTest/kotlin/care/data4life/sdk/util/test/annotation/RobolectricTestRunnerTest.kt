@@ -10,7 +10,7 @@ expect object TestBase64 {
 @RunWithRobolectricTestRunner(RobolectricTestRunner::class)
 class RobolectricTestRunnerTest {
     @Test
-    fun `Given a things runs dependend on Robolectric, it works in common code`() {
+    fun `Given a things runs dependend on Robolectric it works in common code`() {
         // Given
         val data = "The quick brown fox jumps over the lazy dog"
 

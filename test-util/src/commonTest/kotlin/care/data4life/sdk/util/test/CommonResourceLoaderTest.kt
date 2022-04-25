@@ -26,7 +26,7 @@ import kotlin.test.assertTrue
 
 class CommonResourceLoaderTest {
     @Test
-    fun `Given exists is called with a Path to a Fixture, returns false if the Fixture in Common does not exists`() {
+    fun `Given exists is called with a Path to a Fixture returns false if the Fixture in Common does not exists`() {
         // Given
         val path = "/somthing.json"
 
@@ -38,7 +38,7 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given exists is called with a Path to a Fixture and a RootPath, returns false if the Fixture in the given Path does not exists`() {
+    fun `Given exists is called with a Path to a Fixture and a RootPath returns false if the Fixture in the given Path does not exists`() {
         // Given
         val path = "/somthingElse.json"
         val root = "/ROOT/"
@@ -51,7 +51,7 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given exists is called with a Path to a Fixture, returns true if the Fixture in CommonTest exists`() {
+    fun `Given exists is called with a Path to a Fixture returns true if the Fixture in CommonTest exists`() {
         // Given
         val path = "/somethingElse.json"
 
@@ -63,7 +63,7 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given exists is called with a Path to a Fixture and a RootPath, returns true if the Fixture in the given Path exists`() {
+    fun `Given exists is called with a Path to a Fixture and a RootPath returns true if the Fixture in the given Path exists`() {
         // Given
         val root = "./src/jvmTest/resources/"
         val path = "/example.json"
@@ -78,7 +78,7 @@ class CommonResourceLoaderTest {
     // load
 
     @Test
-    fun `Given load is called with a Path to a Fixture, throws an error if the Fixture in Common does not exists`() {
+    fun `Given load is called with a Path to a Fixture throws an error if the Fixture in Common does not exists`() {
         // Given
         val path = "/somthing.json"
 
@@ -90,7 +90,7 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given load is called with a Path to a Fixture, returns the value of the File as String`() {
+    fun `Given load is called with a Path to a Fixture returns the value of the File as String`() {
         // Given
         val path = "/somethingElse.json"
 
@@ -106,7 +106,7 @@ class CommonResourceLoaderTest {
 
     @ExperimentalStdlibApi
     @Test
-    fun `Given load is called with a Path and a ResourceEncoding, it uses the UTF8 by default`() {
+    fun `Given load is called with a Path and a ResourceEncoding it uses the UTF8 by default`() {
         // Given
         val path = "/exampleEncoding.json"
 
@@ -124,7 +124,7 @@ class CommonResourceLoaderTest {
 
     @ExperimentalStdlibApi
     @Test
-    fun `Given load is called with a Path and a ResourceEncoding, it uses the ResourceEncoding`() {
+    fun `Given load is called with a Path and a ResourceEncoding it uses the ResourceEncoding`() {
         // Given
         val path = "/exampleEncoding.json"
 
@@ -141,7 +141,7 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given load is called with a Path to a Fixture and a RootPath, throws an error if the Fixture in Common does not exists`() {
+    fun `Given load is called with a Path to a Fixture and a RootPath throws an error if the Fixture in Common does not exists`() {
         // Given
         val path = "/somthingElse.json"
         val root = "/ROOT/"
@@ -154,7 +154,7 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given load is called with a Path to a Fixture and a RootPath, returns the value of the File as String`() {
+    fun `Given load is called with a Path to a Fixture and a RootPath returns the value of the File as String`() {
         // Given
         val root = "./src/jvmTest/resources/"
         val path = "/example.json"
@@ -171,7 +171,7 @@ class CommonResourceLoaderTest {
 
     // loadBytes
     @Test
-    fun `Given loadBytes is called with a Path to a Fixture, throws an error if the Fixture in Common does not exists`() {
+    fun `Given loadBytes is called with a Path to a Fixture throws an error if the Fixture in Common does not exists`() {
         // Given
         val path = "/somthing.json"
 
@@ -183,7 +183,7 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given loadBytes is called with a Path to a Fixture, returns the value of the File as String`() {
+    fun `Given loadBytes is called with a Path to a Fixture returns the value of the File as String`() {
         // Given
         val path = "/somethingElse.json"
 
@@ -197,7 +197,7 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given loadBytes is called with a Path to a Fixture and a RootPath, throws an error if the Fixture in Common does not exists`() {
+    fun `Given loadBytes is called with a Path to a Fixture and a RootPath throws an error if the Fixture in Common does not exists`() {
         // Given
         val path = "/somthingElse.json"
         val root = "/ROOT/"
@@ -210,7 +210,7 @@ class CommonResourceLoaderTest {
     }
 
     @Test
-    fun `Given loadBytes is called with a Path to a Fixture and a RootPath, returns the value of the File as String`() {
+    fun `Given loadBytes is called with a Path to a Fixture and a RootPath returns the value of the File as String`() {
         // Given
         val root = "./src/jvmTest/resources/"
         val path = "/example.json"

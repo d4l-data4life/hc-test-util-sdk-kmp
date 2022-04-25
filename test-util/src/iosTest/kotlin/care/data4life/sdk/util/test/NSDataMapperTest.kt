@@ -55,7 +55,7 @@ class NSDataMapperTest {
 
     @ExperimentalUnsignedTypes
     @Test
-    fun `Given a toNSData is called with a ByteArray and the result calls toByteArray, it transforms it to is orginal state`() {
+    fun `Given a toNSData is called with a ByteArray and the result calls toByteArray it transforms it to is orginal state`() {
         // Given
         val payload = "ABC".encodeToByteArray()
 

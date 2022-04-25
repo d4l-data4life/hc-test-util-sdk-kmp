@@ -27,7 +27,7 @@ plugins {
     id("care.data4life.gradle.util.test.script.publishing-config")
 }
 
-group = care.data4life.gradle.util.test.config.LibraryConfig.group
+group = LibraryConfig.group
 
 kotlin {
     android {
@@ -39,6 +39,13 @@ kotlin {
     ios {}
 
     sourceSets {
+        all {
+            languageSettings.apply {
+                optIn("kotlin.ExperimentalCoroutinesApi")
+                optIn("kotlin.RequiresOptIn")
+            }
+        }
+
         val commonMain by getting {
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.stdlibCommon)
@@ -59,7 +66,17 @@ kotlin {
                 implementation(Dependency.androidTest.robolectric)
             }
         }
+
+        val androidAndroidTestRelease by getting
+        val androidTestFixtures by getting
+        val androidTestFixturesDebug by getting
+        val androidTestFixturesRelease by getting
+
         val androidTest by getting {
+            dependsOn(androidAndroidTestRelease)
+            dependsOn(androidTestFixtures)
+            dependsOn(androidTestFixturesDebug)
+            dependsOn(androidTestFixturesRelease)
             dependencies {
                 implementation(Dependency.multiplatform.kotlin.testJvm)
                 implementation(Dependency.multiplatform.kotlin.testJvmJunit)
@@ -101,6 +118,7 @@ kotlin {
 
 android {
     compileSdk = LibraryConfig.android.compileSdkVersion
+    resourcePrefix = LibraryConfig.android.resourcePrefix + "coroutine_"
 
     defaultConfig {
         minSdk = LibraryConfig.android.minSdkVersion
@@ -111,8 +129,6 @@ android {
             mapOf("clearPackageData" to "true")
         )
     }
-
-    resourcePrefix(LibraryConfig.android.resourcePrefix + "coroutine_")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

@@ -44,7 +44,7 @@ class HttpMockObjectResponseTest {
     }
 
     @Test
-    fun `Given a response had been set up, it overwrites the response, which is not Any, with the given one`() = runBlockingTest {
+    fun `Given a response had been set up it overwrites the response which is not Any with the given one`() = runBlockingTest {
         // Given
         val objectResponse = Pair("That's", "it!")
         val client = HttpClient(MockEngine) {
@@ -70,7 +70,7 @@ class HttpMockObjectResponseTest {
     }
 
     @Test
-    fun `Given a response had been set up, it overwrites the response which is not Any with the given one for an arbitrary number of calls`() = runBlockingTest {
+    fun `Given a response had been set up it overwrites the response which is not Any with the given one for an arbitrary number of calls`() = runBlockingTest {
         // Given
         val objectResponse = Pair("That's", "it!")
         val client = HttpClient(MockEngine) {
@@ -98,7 +98,7 @@ class HttpMockObjectResponseTest {
     }
 
     @Test
-    fun `Given multiple responses set up, it overwrites the responses, which is not Any, with the given ones`() = runBlockingTest {
+    fun `Given multiple responses set up it overwrites the responses which is not Any with the given ones`() = runBlockingTest {
         // Given
         val objectResponses = listOf(
             Pair("That's", "it!"),
@@ -130,7 +130,7 @@ class HttpMockObjectResponseTest {
     }
 
     @Test
-    fun `Given a response had been installed and set up, it overwrites the responses which is not Any with the given ones and returns the latest response for an arbitrary number of calls`() = runBlockingTest {
+    fun `Given a response had been installed and set up it overwrites the responses which is not Any with the given ones and returns the latest response for an arbitrary number of calls`() = runBlockingTest {
         // Given
         val objectResponses = listOf(
             Pair("That's", "it!"),

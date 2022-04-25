@@ -17,6 +17,7 @@
 package care.data4life.sdk.util.test.coroutine
 
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
@@ -25,7 +26,7 @@ import kotlin.test.assertEquals
 
 class BlockingTestTest {
     @Test
-    fun `Given runBlocking is executed and contains CoroutineScope, it runs the given Scope`() = runBlockingTest {
+    fun `Given runBlocking is executed and contains CoroutineScope it runs the given Scope`() = runBlockingTest {
         // Given
         val sample = "Hello CoroutineScope"
         val channel = Channel<String>()
@@ -42,8 +43,9 @@ class BlockingTestTest {
         )
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     @Test
-    fun `Given runWithContextBlocking test is executed and contains CoroutineScope, it runs the given Scope`() = runWithContextBlockingTest(GlobalScope.coroutineContext) {
+    fun `Given runWithContextBlocking test is executed and contains CoroutineScope it runs the given Scope`() = runWithContextBlockingTest(GlobalScope.coroutineContext) {
         // Given
         val sample = "Hello CoroutineScope"
         val channel = Channel<String>()

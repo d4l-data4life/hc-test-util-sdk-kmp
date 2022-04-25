@@ -28,7 +28,7 @@ import kotlin.test.assertEquals
 
 class HttpMockClientResponseFactoryTest {
     @Test
-    fun `Given createHelloWorldOkResponse is called, it creates OkResponse, which contains Hello World`() = runBlockingTest {
+    fun `Given createHelloWorldOkResponse is called it creates OkResponse which contains Hello World`() = runBlockingTest {
         // Given
         val client = HttpClient(MockEngine) {
             engine {

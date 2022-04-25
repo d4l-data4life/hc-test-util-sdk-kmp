@@ -19,41 +19,40 @@ object Version {
 
     object GradlePlugin {
         const val kotlin = Version.kotlin
-        const val android = "7.0.2"
+        const val android = "7.1.3"
     }
 
     // Kotlin
     /**
      * https://github.com/JetBrains/kotlin
      */
-    const val kotlin = "1.5.21"
+    const val kotlin = "1.6.10"
 
     /**
      * https://github.com/Kotlin/kotlinx.coroutines
      */
-    const val kotlinCoroutines = "1.5.1-native-mt"
+    const val kotlinCoroutines = "1.6.0-native-mt"
 
     // Network
     /**
      * https://ktor.io/
      */
-    const val ktor = "1.6.2"
+    const val ktor = "1.6.8"
 
     // Android
     /**
      * https://developer.android.com/studio/write/java8-support
      */
-    const val androidDesugar = "1.0.9"
+    const val androidDesugar = "1.1.5"
 
     // AndroidX
     /**
      * https://developer.android.com/jetpack/androidx
      */
-    const val androidX = "1.1.0"
-    const val androidXKtx = "1.6.0"
-    const val androidXAppCompat = "1.3.1"
+    const val androidXKtx = "1.7.0"
+    const val androidXAppCompat = "1.4.1"
 
-    const val androidXConstraintLayout = "2.0.1"
+    const val androidXConstraintLayout = "2.1.3"
 
     /**
      * https://developer.android.com/testing
@@ -66,7 +65,7 @@ object Version {
     /**
      * [Material Android](https://github.com/material-components/material-components-android)
      */
-    const val material = "1.4.0"
+    const val material = "1.5.0"
 
     // Junit Test
     const val testJUnit = "4.13.2"
@@ -74,5 +73,5 @@ object Version {
     /**
      * [Robolectric](https://github.com/robolectric/robolectric)
      */
-    const val robolectric = "4.6.1"
+    const val robolectric = "4.7.3"
 }
