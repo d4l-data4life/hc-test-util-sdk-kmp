@@ -87,7 +87,7 @@ danger(args) {
         }
 
         // Changelog
-        if (isChangelogUpdated) {
+        if (pullRequest.body == null || (pullRequest.body as String).length < 10) {
             warn("Changes should be reflected in the CHANGELOG.adoc")
         }
 
