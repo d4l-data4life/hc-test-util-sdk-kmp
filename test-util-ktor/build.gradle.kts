@@ -30,7 +30,7 @@ group = LibraryConfig.group
 
 kotlin {
     android {
-        publishLibraryVariants("release", "debug")
+        publishLibraryVariants("release")
     }
 
     jvm()
