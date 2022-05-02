@@ -46,6 +46,7 @@ toc::[]
 === Changed
 
 * Android Target SDK 30 -> 31
+* Robolectric 4.7.3 -> 4.8
 
 == https://github.com/d4l-data4life/hc-test-util-sdk-kmp/compare/v0.3.0\...v0.4.0[0.4.0]
 
