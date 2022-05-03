@@ -1,6 +1,6 @@
 = Data4Life Test-Util SDK
 :link-repository: https://github.com/d4l-data4life/hc-test-util-sdk-kmp
-:test-util-sdk-version: 0.4.1
+:test-util-sdk-version: 0.5.0
 :doctype: article
 :!showtitle:
 :toc: macro
